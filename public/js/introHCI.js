@@ -25,9 +25,34 @@ function addProjectDetails(e) {
 	var projectID = $(this).closest('.project').attr('id');
 	// get rid of 'project' from the front of the id 'project3'
 	var idNumber = projectID.substr('project'.length);
+    // concatenate path
+    var path = "/project" + "/" + idNumber;
+    var projectSelector = "#project" + idNumber;
+	
+    console.log("User clicked on project " + idNumber);
+    console.log("Going to " + path);
 
-	console.log("User clicked on project " + idNumber);
+    $.get(path, endpointFunc);
+
 }
+
+
+/*
+ * Callback function after AJAX get
+ */
+function endpointFunc(result) {
+    console.log(result);
+    var projectHTML = '<a href="#" class="details">' + '<img src="' + 
+        result['image'] + '" class="detailsImage">' + '<p>' + result['title'] 
+        + '</p>' + '<p><small>' + result['date'] + '</small></p>' + '<p><small>'
+        + result['summary'] + '</small></p></a>';
+    var projectSelector = "#project" + result['id'];
+    
+    $(projectSelector).html(projectHTML);
+
+}
+
+
 
 /*
  * Make an AJAX call to retrieve a color palette for the site
