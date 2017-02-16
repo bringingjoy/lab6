@@ -60,4 +60,14 @@ function endpointFunc(result) {
  */
 function randomizeColors(e) {
 	console.log("User clicked on color button");
+    var path = "/palette";    
+    $.get(path, colorResult);
 }
+
+
+function colorResult(result) {
+    console.log(result);
+    
+}
+
+
