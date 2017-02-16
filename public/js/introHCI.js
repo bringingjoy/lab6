@@ -67,7 +67,13 @@ function randomizeColors(e) {
 
 function colorResult(result) {
     console.log(result);
-    
+    var colorsArr = result['colors'];
+    var pageColors = colorsArr['hex'];
+    $('body').css('background-color', pageColors[0]);
+    $('.thumbnail').css('background-color', pageColors[1]);
+    $('h1, h2, h3, h4, h5, h5').css('color', pageColors[2]);
+    $('p').css('color', pageColors[3]);
+    $('.project img').css('opacity', .75);
 }
 
 
